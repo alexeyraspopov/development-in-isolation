@@ -73,7 +73,7 @@
 		<pre>
 			<code>function getCompanyByUser(userId) {</code>
 			<code>  const <span class="primary-accent">user</span> = <mark>getUser</mark>(userId);</code>
-			<code>  const company = <mark>getCompany</mark>(user.companyId);</code>
+			<code>  const company = <mark>getCompany</mark>(<span class="primary-accent">user</span>.companyId);</code>
 			<code>&nbsp;</code>
 			<code>  return company;</code>
 			<code>}</code>
