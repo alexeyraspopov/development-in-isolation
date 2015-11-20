@@ -48,6 +48,48 @@
 	<section class="slide">
 		<h2 class="shout"><span class="primary-accent">Interactive</span> & <span class="secondary-accent">Reactive</span></h2>
 	</section>
+
+	<section class="slide">
+		<h2>Interactive & Reactive</h2>
+
+		<pre>
+			<code>const <strong class="primary-accent">data</strong> = getData(param);</code>
+			<code><strong class="secondary-accent">process</strong>(<strong class="primary-accent">data</strong>);</code>
+		</pre>
+
+		<pre>
+			<code>getData(param)</code>
+			<code>  .then(<strong class="primary-accent">data</strong> <mark>=></mark> <strong class="secondary-accent">process</strong>(<strong class="primary-accent">data</strong>))</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Interactive (pull)</h2>
+
+		<pre>
+			<code>function getCompanyByUser(userId) {</code>
+			<code>  const <span class="primary-accent">user</span> = <mark>getUser</mark>(userId);</code>
+			<code>  const company = <mark>getCompany</mark>(user.companyId);</code>
+			<code>&nbsp;</code>
+			<code>  return company;</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Reactive (push)</h2>
+
+		<pre>
+			<code>function getCompanyByUser(userId) {</code>
+			<code>  return <mark>getUser</mark>(userId)</code>
+			<code>    .then(<span class="primary-accent">user</span> => <mark>getCompany</mark>(user.companyId));</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<!-- composition -->
+	<!-- error handling -->
+
 	<section class="slide">
 		<h2 class="shout">А что если<em class="primary-accent">?</em></h2>
 	</section>
