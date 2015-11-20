@@ -40,5 +40,19 @@
 	color: red;
 }
 #lambda code{
+	color: #3f51b5;
 	font-size: 150px;
+	animation: fancy-light .5s infinite;
+}
+
+@keyframes fancy-light{
+	from{
+		color: #3f51b5;
+	}
+	50%{
+		color: #ff4081;
+	}
+	to{
+		color: #3f51b5;
+	}
 }
