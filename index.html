@@ -45,7 +45,21 @@
 	</section>
 
 	<section class="slide">
-		<h2 class="shout"><em class="primary-accent">Композиция</em> &mdash; серебрянная пуля!</h2>
+		<h2 class="shout"><em class="primary-accent">Композиция</em> &mdash; серебрянная пуля<em class="secondary-accent">!</em></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Композиция</h2>
+
+		<p>(лат. <em>compositio</em> &mdash; связывание, сложение, соединение) &mdash; составление целого из частей.</p>
+
+		<p class="next"><strong>Композиция <em class="primary-accent">функций</em></strong> &mdash; применение результата одной функции к вычислению результата другой.</p>
+
+		<p class="next"><strong>Композиция <em class="secondary-accent">объектов</em></strong> &mdash; составление объекта на основе других.</p>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code"><code><em>f(g(<span class="primary-accent">a</span>))</em></code></h2>
 	</section>
 
 	<section class="slide">
@@ -61,10 +75,10 @@
 			<code><strong class="secondary-accent">process</strong>(<strong class="primary-accent">data</strong>);</code>
 		</pre>
 
-		<pre>
+		<pre class="next">
 			<code><mark class="comment">// reactive</mark></code>
 			<code>getData(param)</code>
-			<code>  .then(<strong class="primary-accent">data</strong> <mark>=></mark> <strong class="secondary-accent">process</strong>(<strong class="primary-accent">data</strong>))</code>
+			<code>  .then(<strong class="primary-accent">data</strong> <mark>=></mark> <strong class="secondary-accent">process</strong>(<strong class="primary-accent">data</strong>));</code>
 		</pre>
 	</section>
 
@@ -73,8 +87,8 @@
 
 		<pre>
 			<code>function getCompanyByUser(userId) {</code>
-			<code>  const <span class="primary-accent">user</span> = <mark>getUser</mark>(userId);</code>
-			<code>  const company = <mark>getCompany</mark>(<span class="primary-accent">user</span>.companyId);</code>
+			<code>  const <strong class="primary-accent">user</strong> = <mark>getUser</mark>(userId);</code>
+			<code>  const company = <mark>getCompany</mark>(<strong class="primary-accent">user</strong>.companyId);</code>
 			<code>&nbsp;</code>
 			<code>  return company;</code>
 			<code>}</code>
@@ -87,7 +101,150 @@
 		<pre>
 			<code>function getCompanyByUser(userId) {</code>
 			<code>  return <mark>getUser</mark>(userId)</code>
-			<code>    .then(<span class="primary-accent">user</span> => <mark>getCompany</mark>(user.companyId));</code>
+			<code>    .<mark class="important">then</mark>(<strong class="primary-accent">user</strong> => <mark>getCompany</mark>(<strong class="primary-accent">user</strong>.companyId));</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<!-- error handling -->
+
+	<section class="slide">
+		<h2>Interactive &gt; Reactive</h2>
+
+		<ul>
+			<li><em class="primary-accent">Асинхронные</em> (неблокирующие) операции требуют реактивный подход</li>
+			<li>Увеличивается вложенность если данные зависимы и нужно сохранить <em class="secondary-accent">контекст</em></li>
+			<li>Предполагает работу с дополнительным оператором</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">А что если<em class="primary-accent">?</em></h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout"><em class="primary-accent">Асинхронные</em> операции с <em class="secondary-accent">интерактивным</em> синтаксисом!</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Сопрограмма</h2>
+
+		<p>(англ. <em>coroutine</em>) — подпрограмма имеющая несколько <em class="primary-accent">входных</em> точек. На практике реализуется с помощью конечного автомата, который, в свою очередь, реализуется с помощью <strong class="secondary-accent">генератора</strong>.</p>
+	</section>
+
+	<section class="slide">
+		<h2>Генератор</h2>
+
+		<p></p>
+	</section>
+
+	<section class="slide">
+		<h2>Генератор</h2>
+
+		<pre>
+			<code>function<mark class="next">*</mark> fib() {</code>
+
+			<div class="next">
+				<code>  let [a, b] = [1, 1];</code>
+				<code>&nbsp;</code>
+			</div>
+
+			<div class="next">
+				<code>  while (true) {</code>
+				<code class="next">    <mark>yield</mark> a;</code>
+				<code class="next">    [a, b] = [b, a + b];</code>
+				<code>  }</code>
+				<code>}</code>
+			</div>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Использование генератора</h2>
+
+		<pre>
+			<code>const <strong class="primary-accent">gen</strong> = fib();</code>
+			<code class="next">gen.next(); <mark class="comment">// { value: <mark>1</mark>, done: false }</mark></code>
+			<code class="next">gen.next(); <mark class="comment">// { value: <mark>1</mark>, done: false }</mark></code>
+			<code class="next">gen.next(); <mark class="comment">// { value: <mark>2</mark>, done: false }</mark></code>
+			<code class="next">gen.next(); <mark class="comment">// { value: <mark>3</mark>, done: false }</mark></code>
+			<code class="next">gen.next(); <mark class="comment">// { value: <mark>5</mark>, done: false }</mark></code>
+			<code class="next">gen.next(); <mark class="comment">// { value: <mark>8</mark>, done: false }</mark></code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code">
+			<code>npm i <span class="primary-accent">co</span></code>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Interactive, <em class="primary-accent">sync</em></h2>
+
+		<pre>
+			<code>function <strong class="primary-accent">getCompanyByUser</strong>(userId) {</code>
+			<code>  const <strong class="primary-accent">user</strong> = <mark>getUser</mark>(userId);</code>
+			<code>  const company = <mark>getCompany</mark>(<strong class="primary-accent">user</strong>.companyId);</code>
+			<code>&nbsp;</code>
+			<code>  return company;</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Interactive, <em class="secondary-accent">async</em></h2>
+
+		<pre>
+			<code>const <strong class="secondary-accent">getCompanyByUser</strong> = <mark>co.wrap(function* (userId)</mark> {</code>
+			<code>  const <strong class="primary-accent">user</strong> = <mark class="important">yield</mark> getUser(userId);</code>
+			<code>  const company = <mark class="important">yield</mark> getCompany(<strong class="primary-accent">user</strong>.companyId);</code>
+			<code>&nbsp;</code>
+			<code>  return company;</code>
+			<code>});</code>
+		</pre>
+
+		<p class="note">Данный код работает в современных браузерах без транспиляции.</p>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code"><code><span class="primary-accent">async</span>/<span class="secondary-accent">await</span></code></h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code">
+			<code>npm i <span class="primary-accent">regenerator</span></code>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code">
+			<code>npm i <span class="primary-accent">babel</span> <br><span class="secondary-accent">babel-runtime</span></code>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Interactive, <em class="primary-accent">sync</em></h2>
+
+		<pre>
+			<code>function <strong class="primary-accent">getCompanyByUser</strong>(userId) {</code>
+			<code>  const <strong class="primary-accent">user</strong> = <mark>getUser</mark>(userId);</code>
+			<code>  const company = <mark>getCompany</mark>(<strong class="primary-accent">user</strong>.companyId);</code>
+			<code>&nbsp;</code>
+			<code>  return company;</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Interactive, <em class="secondary-accent">async</em></h2>
+
+		<pre>
+			<code><mark>async</mark> function <strong class="secondary-accent">getCompanyByUser</strong>(userId) {</code>
+			<code>  const <strong class="primary-accent">user</strong> = <mark>await</mark> getUser(userId);</code>
+			<code>  const company = <mark>await</mark> getCompany(<strong class="primary-accent">user</strong>.companyId);</code>
+			<code>&nbsp;</code>
+			<code>  return company;</code>
 			<code>}</code>
 		</pre>
 	</section>
@@ -96,23 +253,12 @@
 		<h2 class="shout code"><code><em class="primary-accent">a</em> => f(g(<em class="primary-accent">a</em>))</code></h2>
 	</section>
 
-	<!-- error handling -->
-
 	<section class="slide">
-		<h2 class="shout">А что если<em class="primary-accent">?</em></h2>
+		<h2 class="shout code"><code><em class="secondary-accent">async</em> <em class="primary-accent">a</em> => <br>f(<em class="secondary-accent">await</em> g(<em class="primary-accent">a</em>))</code></h2>
 	</section>
 
-	<!-- yield -->
-	<!-- coroutine -->
-	<!-- async/await -->
 	<!-- async compose -->
 	<!-- React UI compose -->
-
-	<section class="slide">
-		<h2 class="shout code">
-			<code>npm i <span class="primary-accent">co</span></code>
-		</h2>
-	</section>
 
 	<section class="slide">
 		<h2 class="shout code">
