@@ -32,11 +32,12 @@
 .secondary-accent{
 	color: #ff4081;
 }
-.slide.disclaimer {
-	color: white;
+#disclaimer{
 	background: black;
+	color: white;
+	text-align: center;
 }
-.slide.disclaimer h2{
+#disclaimer h2{
 	color: red;
 }
 #lambda code{
