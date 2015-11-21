@@ -410,6 +410,102 @@
 	</section>
 
 	<section class="slide">
+		<h2>Синхронный компонент</h2>
+
+		<pre>
+			<code>Project = ({<strong class="primary-accent">data</strong>}) =></code>
+			<code>  &lt;article&gt;</code>
+			<code>    &lt;p&gt;{<strong class="primary-accent">data</strong>.name}&lt;/p&gt;</code>
+			<code>    &lt;p&gt;{<strong class="primary-accent">data</strong>.createdAt}&lt;/p&gt;</code>
+			<code>  &lt;/article&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Web API</h2>
+
+		<pre>
+			<code>API.getProject = <strong class="primary-accent">projectId</strong> =></code>
+			<code>  <strong class="secondary-accent">fetch</strong>(`/projects/${<strong class="primary-accent">projectId</strong>}`)</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Асинхронный компонент</h2>
+
+		<pre>
+			<code>async ProjectPage = ({<strong class="primary-accent">projectId</strong>}) => {</code>
+			<code>  const <strong class="secondary-accent">project</strong> = <mark>await API.getProject</mark>(<strong class="primary-accent">projectId</strong>);</code>
+			<code>&nbsp;</code>
+			<code>  return &lt;Project data={<strong class="secondary-accent">project</strong>} /&gt;</code>
+			<code>}</code>
+		</pre>
+
+		<pre class="next"><code>export default <mark>Transmitter.wrap(ProjectPage)</mark></code></pre>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Redux<em class="primary-accent">?</em></h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code"><code>npm <strong class="primary-accent">uninstall</strong> react-redux</code></h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code"><code>npm i <span class="primary-accent">rx</span></code></h2>
+	</section>
+
+	<section class="slide">
+		<h2>И снова атомарный компоненты</h2>
+
+		<pre>
+			<code>Todo = ({<strong class="primary-accent">todo</strong>, <strong class="primary-accent">onStatusChange</strong>}) =></code>
+			<code>  &lt;article role="listitem"&gt;</code>
+			<code>    &lt;p&gt;{<strong class="primary-accent">todo</strong>.title}&lt;/p&gt;</code>
+			<code>    &lt;input</code>
+			<code>      type="checkbox"</code>
+			<code>      checked={<strong class="primary-accent">todo</strong>.done} onChange={<strong class="primary-accent">onStatusChange</strong>} /&gt;</code>
+			<code>  &lt;/article&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Список</h2>
+
+		<pre>
+			<code>TodoList = ({<strong class="primary-accent">todos</strong>, <strong class="primary-accent">onStatusChange</strong>}) =></code>
+			<code>  &lt;section&gt;</code>
+			<code>    {<strong class="primary-accent">todos</strong>.map(<strong class="secondary-accent">todo</strong> =></code>
+			<code>      &lt;Todo key={<strong class="secondary-accent">todo</strong>.id}</code>
+			<code>        todo={<strong class="secondary-accent">todo</strong>} onStatusChange={<strong class="primary-accent">onStatusChange</strong>} /&gt;</code>
+			<code>    )}</code>
+			<code>  &lt;/section&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Контейнер (TodoListContainer)</h2>
+
+		<pre>
+			<code>export default Transmitter.<strong class="primary-accent">create</strong>(TodoList, {</code>
+			<code>  fragments: {</code>
+			<code>    <strong class="secondary-accent">todos</strong>() {</code>
+			<code>      return <mark>Transmitter.fromStore(TodoStore)</mark>;</code>
+			<code>    },</code>
+			<code>    onStatusChange: () => TodosActions.updateTodo,</code>
+			<code>  }</code>
+			<code>})</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout code">
+			<code style="font-size: 62px">&lt;TodoList<span class="primary-accent">Container</span> /&gt;</code>
+		</h2>
+	</section>
+
+	<section class="slide">
 		<h2>О чем я вообще?</h2>
 
 		<ul>
