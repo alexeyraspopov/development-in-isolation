@@ -348,6 +348,16 @@
 	</section>
 
 	<section class="slide">
+		<h2>Почему так?</h2>
+
+		<ul>
+			<li>В шаблонах никто нас не ограничивает в написании большого куска UI (привычка)</li>
+			<li>Очень все плохо с DI</li>
+			<li>Атрибуты только строковые</li>
+		</ul>
+	</section>
+
+	<section class="slide">
 		<h2>И еще на уровень выше</h2>
 
 		<pre>
@@ -363,13 +373,22 @@
 	</section>
 
 	<section class="slide">
-		<h2>Почему так?</h2>
+		<h2 class="shout">Стоп<em class="primary-accent">!</em> Что<em class="secondary-accent">?</em></h2>
+	</section>
 
-		<ul>
-			<li>В шаблонах никто нас не ограничивает в написании большого куска UI (привычка)</li>
-			<li>Очень все плохо с DI</li>
-			<li>Атрибуты только строковые</li>
-		</ul>
+	<section class="slide">
+		<h2>И еще на уровень выше</h2>
+
+		<pre>
+			<code><mark>async</mark> FriendsPage = ({<strong class="primary-accent">userId</strong>}) => {</code>
+			<code>  const <strong class="secondary-accent">friends</strong> = <mark>await</mark> getFriends(<strong class="primary-accent">userId</strong>);</code>
+			<code>&nbsp;</code>
+			<code>  &lt;div&gt;</code>
+			<code>    &lt;h2&gt;Friends&lt;/h2&gt;</code>
+			<code>    &lt;<mark>UsersList</mark> users={<strong class="secondary-accent">friends</strong>} onSelect={openPage} /&gt;</code>
+			<code>  &lt;/div&gt;</code>
+			<code>}</code>
+		</pre>
 	</section>
 
 	<section class="slide">
@@ -377,6 +396,8 @@
 			<a href="http://worrydream.com/refs/Shannon%20-%20A%20Mathematical%20Theory%20of%20Communication.pdf">A Mathematical Theory of Communication</a>
 		</h2>
 	</section>
+
+	<section class="slide"><img src="pictures/communication.png" class="cover w"></section>
 
 	<section class="slide">
 		<h2 class="shout code">
