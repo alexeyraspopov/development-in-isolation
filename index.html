@@ -21,6 +21,8 @@
 		<h2 class="shout">Разработка с <em class="secondary-accent">ограничениями</em></h2>
 	</section>
 
+	<section class="slide"><img src="pictures/walkthrough.jpg" class="cover w"></section>
+
 	<section class="slide" id="disclaimer">
 		<h2>Disclaimer</h2>
 
@@ -47,6 +49,8 @@
 	<section class="slide">
 		<h2 class="shout"><em class="primary-accent">Композиция</em> &mdash; серебрянная пуля<em class="secondary-accent">!</em></h2>
 	</section>
+
+	<section class="slide"><img src="pictures/omg.jpg" class="cover w"></section>
 
 	<section class="slide">
 		<h2>Композиция</h2>
@@ -106,6 +110,10 @@
 		</pre>
 	</section>
 
+	<section class="slide"><img src="pictures/callback-hell.png" class="cover w"></section>
+
+	<section class="slide"><img src="pictures/fox-stuck.jpg" class="cover w"></section>
+
 	<!-- error handling -->
 
 	<section class="slide">
@@ -126,16 +134,20 @@
 		<h2 class="shout"><em class="primary-accent">Асинхронные</em> операции с <em class="secondary-accent">интерактивным</em> синтаксисом!</h2>
 	</section>
 
+	<section class="slide"><img src="pictures/fox-suspicious.jpg" class="cover w"></section>
+
 	<section class="slide">
 		<h2>Сопрограмма</h2>
 
-		<p>(англ. <em>coroutine</em>) — подпрограмма имеющая несколько <em class="primary-accent">входных</em> точек. На практике реализуется с помощью конечного автомата, который, в свою очередь, реализуется с помощью <strong class="secondary-accent">генератора</strong>.</p>
+		<p>(англ. <em>coroutine</em>) &mdash; подпрограмма имеющая несколько <em class="primary-accent">входных</em> точек. На практике реализуется с помощью конечного автомата, который, в свою очередь, реализуется с помощью <strong class="secondary-accent">генератора</strong>.</p>
 	</section>
 
 	<section class="slide">
 		<h2>Генератор</h2>
 
-		<p></p>
+		<p>(англ. <em>generator</em>) &mdash; рутина (подпрограмма) которая может <em class="primary-accent">генерировать</em> последовательность значений (по требованию). Создает итератор.</p>
+
+		<p><strong>Итератор</strong> (англ. <em>iterator</em>) &mdash; объект предоставляющий последовательный доступ к элементам коллекции.</p>
 	</section>
 
 	<section class="slide">
@@ -324,13 +336,13 @@
 		<h2>Композиция</h2>
 
 		<pre>
-			<code>UsersList = ({users, onSelect}) =></code>
+			<code>UsersList = ({<strong class="primary-accent">users</strong>, <strong class="primary-accent">onSelect</strong>}) =></code>
 			<code>  &lt;section&gt;</code>
-			<code>    {users.map(user => </code>
-			<code>      &lt;UserInfo</code>
-			<code>        key={user.id}</code>
-			<code>        user={user}</code>
-			<code>        onSelect={onSelect} /&gt;)}</code>
+			<code>    {<strong class="primary-accent">users</strong>.map(<em class="secondary-accent">user</em> => </code>
+			<code>      &lt;<mark>UserInfo</mark></code>
+			<code>        key={<strong class="secondary-accent">user</strong>.id}</code>
+			<code>        user={<strong class="secondary-accent">user</strong>}</code>
+			<code>        onSelect={<strong class="primary-accent">onSelect</strong>} /&gt;)}</code>
 			<code>  &lt;/section&gt;</code>
 		</pre>
 	</section>
@@ -339,12 +351,12 @@
 		<h2>И еще на уровень выше</h2>
 
 		<pre>
-			<code>FriendsPage = ({userId}) => {</code>
-			<code>  const friends = getFriends(userId);</code>
+			<code>FriendsPage = ({<strong class="primary-accent">userId</strong>}) => {</code>
+			<code>  const <strong class="secondary-accent">friends</strong> = getFriends(<strong class="primary-accent">userId</strong>);</code>
 			<code>&nbsp;</code>
 			<code>  &lt;div&gt;</code>
 			<code>    &lt;h2&gt;Friends&lt;/h2&gt;</code>
-			<code>    &lt;UsersList users={friends} onSelect={openPage} /&gt;</code>
+			<code>    &lt;<mark>UsersList</mark> users={<strong class="secondary-accent">friends</strong>} onSelect={openPage} /&gt;</code>
 			<code>  &lt;/div&gt;</code>
 			<code>}</code>
 		</pre>
@@ -392,6 +404,8 @@
 			<li><a href="https://jakearchibald.com/2014/es7-async-functions/">ES7 async functions</a></li>
 		</ul>
 	</section>
+
+	<section class="slide"><img src="pictures/thanks.jpg" class="cover w"></section>
 
 	<section class="slide">
 		<h2>Спасибо</h2>
