@@ -26,10 +26,10 @@
 	background: none;
 	color: rgba(0, 0, 0, 0.3);
 }
-.primary-accent{
+.slide .primary-accent{
 	color: #3f51b5;
 }
-.secondary-accent{
+.slide .secondary-accent{
 	color: #ff4081;
 }
 #disclaimer{

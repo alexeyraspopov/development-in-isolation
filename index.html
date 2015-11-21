@@ -257,12 +257,78 @@
 		<h2 class="shout code"><code><em class="secondary-accent">async</em> <em class="primary-accent">a</em> => <br>f(<em class="secondary-accent">await</em> g(<em class="primary-accent">a</em>))</code></h2>
 	</section>
 
-	<!-- async compose -->
-	<!-- React UI compose -->
+	<section class="slide">
+		<h2>Основная идея</h2>
+
+		<ul>
+			<li>Функция выполняет одну задачу</li>
+			<li class="next">Разработка начинается снизу</li>
+			<li class="next">Каждая последующая функция в композиции подготавливает данные для предыдущей</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Снизу вверх</h2>
+
+		<pre>
+			<code class="next"><strong class="primary-accent">fetch</strong> = <strong class="secondary-accent">url</strong> => new Promise(...);</code>
+			<code class="next"><strong class="primary-accent">getUser</strong> = <strong class="secondary-accent">userId</strong> => <strong class="primary-accent">fetch</strong>(`/users/${<strong class="secondary-accent">userId</strong>}`);</code>
+			<code class="next"><strong class="primary-accent">getFriends</strong> = async <strong class="secondary-accent">ids</strong> => await* <strong class="secondary-accent">ids</strong>.map(<strong class="primary-accent">getUser</strong>);</code>
+			<div class="next">
+				<code><strong class="primary-accent">showFriendsByUser</strong> = async <strong class="secondary-accent">userId</strong> => {</code>
+				<code class="next">  const <strong class="secondary-accent">user</strong> = await <strong class="primary-accent">getUser</strong>(<strong class="secondary-accent">userId</strong>);</code>
+				<code class="next">  const <strong class="secondary-accent">friends</strong> = await <strong class="primary-accent">getFriends</strong>(<strong class="secondary-accent">user</strong>.friendsIds);</code>
+				<code class="next">  return template(<strong class="secondary-accent">friends</strong>);</code>
+				<code>};</code>
+			</div>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Преимущества</h2>
+
+		<ul>
+			<li>Переиспользуемость</li>
+			<li>Слоистая архитектура бесплатно, без СМС</li>
+			<li>Легкость написания тестов</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout">Хорошо<em class="primary-accent">!</em> <br>Что делать с объектами<em class="secondary-accent">?</em></h2>
+	</section>
 
 	<section class="slide">
 		<h2 class="shout code">
 			<code>npm i <span class="primary-accent">react</span></code>
+		</h2>
+	</section>
+
+	<section class="slide">
+		<h2 class="shout"><em>Сорян))</em></h2>
+	</section>
+
+	<section class="slide">
+		<h2>Самый маленький компонент</h2>
+
+		<pre>
+			<code><strong class="secondary-accent">function</strong> UserInfo({<strong class="primary-accent">user</strong>, <strong class="primary-accent">onSelect</strong>}) {</code>
+			<code>  return (</code>
+			<code class="secondary-accent">    &lt;article onClick={<strong class="primary-accent">onSelect</strong>}&gt;</code>
+			<code>      &lt;p&gt;{<strong class="primary-accent">user</strong>.name}&lt;/p&gt;</code>
+			<code>      &lt;p&gt;&lt;em&gt;{<strong class="primary-accent">user</strong>.isOnline}&lt;/em&gt;&lt;/p&gt;</code>
+			<code class="secondary-accent">    &lt;/article&gt;</code>
+			<code>  );</code>
+			<code>}</code>
+		</pre>
+	</section>
+
+	<!-- в шаблонах мы ебашим страницу -->
+	<!-- React UI compose -->
+
+	<section class="slide">
+		<h2 class="shout">
+			<a href="http://worrydream.com/refs/Shannon%20-%20A%20Mathematical%20Theory%20of%20Communication.pdf">A Mathematical Theory of Communication</a>
 		</h2>
 	</section>
 
