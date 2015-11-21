@@ -312,19 +312,53 @@
 		<h2>Самый маленький компонент</h2>
 
 		<pre>
-			<code><strong class="secondary-accent">function</strong> UserInfo({<strong class="primary-accent">user</strong>, <strong class="primary-accent">onSelect</strong>}) {</code>
-			<code>  return (</code>
-			<code class="secondary-accent">    &lt;article onClick={<strong class="primary-accent">onSelect</strong>}&gt;</code>
-			<code>      &lt;p&gt;{<strong class="primary-accent">user</strong>.name}&lt;/p&gt;</code>
-			<code>      &lt;p&gt;&lt;em&gt;{<strong class="primary-accent">user</strong>.isOnline}&lt;/em&gt;&lt;/p&gt;</code>
-			<code class="secondary-accent">    &lt;/article&gt;</code>
-			<code>  );</code>
+			<code>UserInfo = ({<strong class="primary-accent">user</strong>, <strong class="primary-accent">onSelect</strong>}) =></code>
+			<code class="secondary-accent">  &lt;article onClick={<strong class="primary-accent">onSelect</strong>} role="listitem"&gt;</code>
+			<code>    &lt;p&gt;{<strong class="primary-accent">user</strong>.name}&lt;/p&gt;</code>
+			<code>    &lt;p&gt;&lt;em&gt;{<strong class="primary-accent">user</strong>.isOnline}&lt;/em&gt;&lt;/p&gt;</code>
+			<code class="secondary-accent">  &lt;/article&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Композиция</h2>
+
+		<pre>
+			<code>UsersList = ({users, onSelect}) =></code>
+			<code>  &lt;section&gt;</code>
+			<code>    {users.map(user => </code>
+			<code>      &lt;UserInfo</code>
+			<code>        key={user.id}</code>
+			<code>        user={user}</code>
+			<code>        onSelect={onSelect} /&gt;)}</code>
+			<code>  &lt;/section&gt;</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>И еще на уровень выше</h2>
+
+		<pre>
+			<code>FriendsPage = ({userId}) => {</code>
+			<code>  const friends = getFriends(userId);</code>
+			<code>&nbsp;</code>
+			<code>  &lt;div&gt;</code>
+			<code>    &lt;h2&gt;Friends&lt;/h2&gt;</code>
+			<code>    &lt;UsersList users={friends} onSelect={openPage} /&gt;</code>
+			<code>  &lt;/div&gt;</code>
 			<code>}</code>
 		</pre>
 	</section>
 
-	<!-- в шаблонах мы ебашим страницу -->
-	<!-- React UI compose -->
+	<section class="slide">
+		<h2>Почему так?</h2>
+
+		<ul>
+			<li>В шаблонах никто нас не ограничивает в написании большого куска UI (привычка)</li>
+			<li>Очень все плохо с DI</li>
+			<li>Атрибуты только строковые</li>
+		</ul>
+	</section>
 
 	<section class="slide">
 		<h2 class="shout">
